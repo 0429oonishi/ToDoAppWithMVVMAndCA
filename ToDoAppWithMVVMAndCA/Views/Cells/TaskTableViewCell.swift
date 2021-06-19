@@ -9,15 +9,11 @@ import UIKit
 
 class TaskTableViewCell: UITableViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    @IBOutlet private weak var checkButton: UIButton!
+    @IBOutlet private weak var taskLabel: UILabel!
+    
+    @IBAction private func checkButtonDidTapped(_ sender: Any) {
+        
     }
     
 }
