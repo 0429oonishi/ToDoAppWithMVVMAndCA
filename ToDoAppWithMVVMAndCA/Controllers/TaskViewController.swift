@@ -8,7 +8,7 @@
 import UIKit
 
 final class TaskViewController: UIViewController {
-
+    
     @IBOutlet private weak var tableView: UITableView!
     private var testData = Task.testData
     
@@ -18,7 +18,7 @@ final class TaskViewController: UIViewController {
         setupTableView()
         
     }
-
+    
     private func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
@@ -29,6 +29,7 @@ final class TaskViewController: UIViewController {
     
     @IBAction private func addTaskButtonDidTapped(_ sender: Any) {
         let additionalTaskVC = AdditionalTaskViewController.instantiate()
+        additionalTaskVC.delegate = self
         navigationController?.pushViewController(additionalTaskVC, animated: true)
     }
     
@@ -55,8 +56,10 @@ extension TaskViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: TaskTableViewCell.identifier,
-                                                 for: indexPath) as! TaskTableViewCell
+        let cell = tableView.dequeueReusableCell(
+            withIdentifier: TaskTableViewCell.identifier,
+            for: indexPath
+        ) as! TaskTableViewCell
         let task = testData[indexPath.row]
         cell.configure(task: task) { [weak self] in
             self?.testData[indexPath.row].isChecked.toggle()
@@ -67,5 +70,16 @@ extension TaskViewController: UITableViewDataSource {
         return cell
     }
     
+    
+}
+
+extension TaskViewController: AdditionalTaskViewControllerDelegate {
+    
+    func saveButtonDidTapped(text: String) {
+        testData.append(Task(title: text, isChecked: false))
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
     
 }

@@ -7,13 +7,33 @@
 
 import UIKit
 
+protocol AdditionalTaskViewControllerDelegate: AnyObject {
+    func saveButtonDidTapped(text: String)
+}
+
 final class AdditionalTaskViewController: UIViewController {
+    
+    @IBOutlet private weak var textField: UITextField!
+
+    weak var delegate: AdditionalTaskViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         
     }
+    
+    @IBAction private func saveButtonDidTapped(_ sender: Any) {
+        if let text = textField.text, !text.isEmpty {
+            delegate?.saveButtonDidTapped(text: text)
+        }
+        navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction private func backButtonDidTapped(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
+    }
+    
     
     static func instantiate() -> AdditionalTaskViewController {
         let additionalTaskVC = UIStoryboard.additionalTask.instantiateViewController(
