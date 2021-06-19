@@ -40,7 +40,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="決定" id="XD7-90-207">
                             <connections>
-                                <action selector="saveButtonDidTapped:" destination="Y6W-OH-hqX" id="pXg-gR-Tgv"/>
+                                <action selector="addButtonDidTapped:" destination="Y6W-OH-hqX" id="pXg-gR-Tgv"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

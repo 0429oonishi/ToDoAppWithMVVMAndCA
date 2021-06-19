@@ -39,8 +39,20 @@ extension TaskViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let editTaskVC = EditTaskViewController.instantiate()
-        present(editTaskVC, animated: true, completion: nil)
+        let editTaskVC = EditTaskViewController.instantiate(text: testData[indexPath.row].title)
+        editTaskVC.editEvent = { [weak self] text in
+            self?.testData[indexPath.row].title = text
+            DispatchQueue.main.async {
+                self?.tableView.reloadRows(at: [indexPath], with: .automatic)
+            }
+        }
+        editTaskVC.deleteEvent = { [weak self] in
+            self?.testData.remove(at: indexPath.row)
+            DispatchQueue.main.async {
+                self?.tableView.reloadData()
+            }
+        }
+        navigationController?.pushViewController(editTaskVC, animated: true)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -75,7 +87,7 @@ extension TaskViewController: UITableViewDataSource {
 
 extension TaskViewController: AdditionalTaskViewControllerDelegate {
     
-    func saveButtonDidTapped(text: String) {
+    func addButtonDidTapped(text: String) {
         testData.append(Task(title: text, isChecked: false))
         DispatchQueue.main.async {
             self.tableView.reloadData()
