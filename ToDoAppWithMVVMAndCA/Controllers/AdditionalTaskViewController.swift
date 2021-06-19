@@ -8,7 +8,7 @@
 import UIKit
 
 protocol AdditionalTaskViewControllerDelegate: AnyObject {
-    func saveButtonDidTapped(text: String)
+    func addButtonDidTapped(text: String)
 }
 
 final class AdditionalTaskViewController: UIViewController {
@@ -23,9 +23,9 @@ final class AdditionalTaskViewController: UIViewController {
         
     }
     
-    @IBAction private func saveButtonDidTapped(_ sender: Any) {
+    @IBAction private func addButtonDidTapped(_ sender: Any) {
         if let text = textField.text, !text.isEmpty {
-            delegate?.saveButtonDidTapped(text: text)
+            delegate?.addButtonDidTapped(text: text)
         }
         navigationController?.popViewController(animated: true)
     }
