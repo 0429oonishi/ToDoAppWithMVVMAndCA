@@ -9,15 +9,37 @@ import UIKit
 
 final class EditTaskViewController: UIViewController {
     
+    @IBOutlet private weak var textField: UITextField!
+    
+    var text: String?
+    var editEvent: ((String) -> Void)?
+    var deleteEvent: (() -> Void)?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        textField.text = text
+        
     }
     
-    static func instantiate() -> EditTaskViewController {
+    @IBAction private func editButtonDidTapped(_ sender: Any) {
+        if let text = textField.text, !text.isEmpty {
+            editEvent?(text)
+        } else {
+            deleteEvent?()
+        }
+        navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction private func backButtonDidTapped(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    static func instantiate(text: String) -> EditTaskViewController {
         let editTaskVC = UIStoryboard.editTask.instantiateViewController(
             withIdentifier: .editTaskVCIdentifier
         ) as! EditTaskViewController
+        editTaskVC.text = text
         return editTaskVC
     }
     
@@ -32,3 +54,5 @@ private extension UIStoryboard {
 private extension String {
     static let editTaskVCIdentifier = "EditTaskViewController"
 }
+
+ 
