@@ -28,7 +28,8 @@ final class TaskViewController: UIViewController {
     }
     
     @IBAction private func addTaskButtonDidTapped(_ sender: Any) {
-        
+        let additionalTaskVC = AdditionalTaskViewController.instantiate()
+        navigationController?.pushViewController(additionalTaskVC, animated: true)
     }
     
 }
@@ -37,6 +38,8 @@ extension TaskViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        let editTaskVC = EditTaskViewController.instantiate()
+        present(editTaskVC, animated: true, completion: nil)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
