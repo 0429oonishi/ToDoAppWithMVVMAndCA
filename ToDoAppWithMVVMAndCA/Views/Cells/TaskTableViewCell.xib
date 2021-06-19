@@ -18,12 +18,12 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m2K-XU-LqN">
-                        <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
+                        <rect key="frame" x="10" y="0.0" width="44" height="44"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="m2K-XU-LqN" secondAttribute="height" id="v5l-Ox-fIJ"/>
                         </constraints>
                         <state key="normal">
-                            <imageReference key="image" image="circle" catalog="system" symbolScale="large"/>
+                            <imageReference key="image" image="circle" catalog="system" symbolScale="default"/>
                         </state>
                         <connections>
                             <action selector="checkButtonDidTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="QeU-XW-OSY"/>
@@ -37,10 +37,10 @@
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="ekZ-Ag-Gj4" firstAttribute="leading" secondItem="m2K-XU-LqN" secondAttribute="trailing" constant="20" id="74w-BL-Ocz"/>
+                    <constraint firstItem="ekZ-Ag-Gj4" firstAttribute="leading" secondItem="m2K-XU-LqN" secondAttribute="trailing" constant="10" id="74w-BL-Ocz"/>
                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ekZ-Ag-Gj4" secondAttribute="trailing" constant="20" id="DSR-Nf-G3M"/>
                     <constraint firstItem="ekZ-Ag-Gj4" firstAttribute="centerY" secondItem="m2K-XU-LqN" secondAttribute="centerY" id="ROj-i4-iqk"/>
-                    <constraint firstItem="m2K-XU-LqN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="ZNF-7m-Oex"/>
+                    <constraint firstItem="m2K-XU-LqN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="ZNF-7m-Oex"/>
                     <constraint firstAttribute="bottom" secondItem="m2K-XU-LqN" secondAttribute="bottom" id="spk-uc-GbN"/>
                     <constraint firstItem="m2K-XU-LqN" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="xrB-bP-qLJ"/>
                 </constraints>
