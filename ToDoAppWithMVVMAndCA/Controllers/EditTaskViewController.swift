@@ -7,28 +7,28 @@
 
 import UIKit
 
-class EditTaskViewController: UIViewController {
-
+final class EditTaskViewController: UIViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
     }
     
     static func instantiate() -> EditTaskViewController {
-        let EditTaskVC = UIStoryboard.additionalTask.instantiateViewController(
-            withIdentifier: .additionalTaskIdentifier
+        let editTaskVC = UIStoryboard.editTask.instantiateViewController(
+            withIdentifier: .editTaskVCIdentifier
         ) as! EditTaskViewController
-        return EditTaskVC
+        return editTaskVC
     }
     
 }
 
 private extension UIStoryboard {
-    static var additionalTask: UIStoryboard {
-        return UIStoryboard(name: "AdditionalTask", bundle: nil)
+    static var editTask: UIStoryboard {
+        return UIStoryboard(name: "EditTask", bundle: nil)
     }
 }
 
 private extension String {
-    static let additionalTaskIdentifier = "AdditionalTaskViewController"
+    static let editTaskVCIdentifier = "EditTaskViewController"
 }
