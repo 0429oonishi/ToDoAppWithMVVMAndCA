@@ -8,9 +8,14 @@
 import Foundation
 import RealmSwift
 
+// 共通型
+struct Task {
+    var title: String
+    var isChecked: Bool
+}
 
-
+// Realmに依存した型
 final class RealmTask: Object {
-    @objc dynamic var title: String = ""
-    @objc dynamic var isChecked: Bool = false
+    @objc dynamic var title = ""
+    @objc dynamic var isChecked = false
 }
