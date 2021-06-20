@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2F989F3CB858442C06FF55E4 /* Pods_ToDoAppWithMVVMAndCA.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F19961942D2ED22396C6913 /* Pods_ToDoAppWithMVVMAndCA.framework */; };
 		ABB8EDD2267FB6C6004C1EAE /* RealmTaskRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB8EDD1267FB6C6004C1EAE /* RealmTaskRepository.swift */; };
+		ABB8EDD4267FBCF4004C1EAE /* TaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB8EDD3267FBCF4004C1EAE /* TaskViewModel.swift */; };
 		ABEB845A267E1F250044414B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEB8459267E1F250044414B /* AppDelegate.swift */; };
 		ABEB845C267E1F250044414B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEB845B267E1F250044414B /* SceneDelegate.swift */; };
 		ABEB845E267E1F250044414B /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEB845D267E1F250044414B /* TaskViewController.swift */; };
@@ -31,6 +32,7 @@
 		353E045C2EB69D3B3960C030 /* Pods-ToDoAppWithMVVMAndCA.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToDoAppWithMVVMAndCA.debug.xcconfig"; path = "Target Support Files/Pods-ToDoAppWithMVVMAndCA/Pods-ToDoAppWithMVVMAndCA.debug.xcconfig"; sourceTree = "<group>"; };
 		8F19961942D2ED22396C6913 /* Pods_ToDoAppWithMVVMAndCA.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ToDoAppWithMVVMAndCA.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABB8EDD1267FB6C6004C1EAE /* RealmTaskRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmTaskRepository.swift; sourceTree = "<group>"; };
+		ABB8EDD3267FBCF4004C1EAE /* TaskViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewModel.swift; sourceTree = "<group>"; };
 		ABEB8456267E1F250044414B /* ToDoAppWithMVVMAndCA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoAppWithMVVMAndCA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABEB8459267E1F250044414B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ABEB845B267E1F250044414B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -81,6 +83,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		ABB8EDD5267FBCF9004C1EAE /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				ABB8EDD3267FBCF4004C1EAE /* TaskViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		ABEB844D267E1F250044414B = {
 			isa = PBXGroup;
 			children = (
@@ -105,6 +115,7 @@
 				ABEB8473267E231E0044414B /* Models */,
 				ABEB8471267E23130044414B /* Views */,
 				ABEB8472267E23170044414B /* Controllers */,
+				ABB8EDD5267FBCF9004C1EAE /* ViewModels */,
 				ABEB8459267E1F250044414B /* AppDelegate.swift */,
 				ABEB845B267E1F250044414B /* SceneDelegate.swift */,
 				ABEB8462267E1F290044414B /* Assets.xcassets */,
@@ -314,6 +325,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ABEB848E267E4EC40044414B /* TaskUseCase.swift in Sources */,
+				ABB8EDD4267FBCF4004C1EAE /* TaskViewModel.swift in Sources */,
 				ABB8EDD2267FB6C6004C1EAE /* RealmTaskRepository.swift in Sources */,
 				ABEB846F267E230E0044414B /* TaskTableViewCell.swift in Sources */,
 				ABEB845E267E1F250044414B /* TaskViewController.swift in Sources */,

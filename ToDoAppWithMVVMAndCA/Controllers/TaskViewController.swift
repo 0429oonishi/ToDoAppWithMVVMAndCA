@@ -6,16 +6,42 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 final class TaskViewController: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var addTaskButton: UIBarButtonItem!
+    
+    // MARK: - ToDo 引き離す
     private var taskUseCase = TaskUseCase(RealmTaskRepositoryImpl())
+    
+    private let taskViewModel = TaskViewModel()
+    private let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupTableView()
+        setupBindings()
+        
+    }
+    
+    private func setupBindings() {
+        // Input
+        addTaskButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                self?.taskViewModel.inputs.addTaskButtonDidTapped() {
+                    let additionalTaskVC = AdditionalTaskViewController.instantiate()
+                    additionalTaskVC.delegate = self
+                    self?.navigationController?.pushViewController(additionalTaskVC, animated: true)
+                }
+            })
+            .disposed(by: disposeBag)
+        
+        // Output
+        
         
     }
     
@@ -25,12 +51,6 @@ final class TaskViewController: UIViewController {
         tableView.tableFooterView = UIView()
         tableView.register(TaskTableViewCell.nib,
                            forCellReuseIdentifier: TaskTableViewCell.identifier)
-    }
-    
-    @IBAction private func addTaskButtonDidTapped(_ sender: Any) {
-        let additionalTaskVC = AdditionalTaskViewController.instantiate()
-        additionalTaskVC.delegate = self
-        navigationController?.pushViewController(additionalTaskVC, animated: true)
     }
     
 }

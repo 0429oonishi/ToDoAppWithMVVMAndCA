@@ -31,13 +31,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="タスク" id="ix2-Id-RQb">
-                        <barButtonItem key="rightBarButtonItem" title="追加" id="quY-Ep-1PX">
-                            <connections>
-                                <action selector="addTaskButtonDidTapped:" destination="Y6W-OH-hqX" id="ge7-g1-nGg"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="追加" id="quY-Ep-1PX"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="addTaskButton" destination="quY-Ep-1PX" id="KdY-O6-XzX"/>
                         <outlet property="tableView" destination="PgL-oY-lS6" id="u8j-NR-Fje"/>
                     </connections>
                 </viewController>
