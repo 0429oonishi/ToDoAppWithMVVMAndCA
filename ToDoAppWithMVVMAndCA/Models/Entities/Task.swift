@@ -8,7 +8,9 @@
 import Foundation
 import RealmSwift
 
-final class Task: Object {
+
+
+final class RealmTask: Object {
     @objc dynamic var title: String = ""
     @objc dynamic var isChecked: Bool = false
 }

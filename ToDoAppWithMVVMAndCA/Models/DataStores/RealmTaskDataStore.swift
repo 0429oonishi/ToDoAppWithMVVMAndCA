@@ -8,25 +8,25 @@
 import Foundation
 import RealmSwift
 
-final class TaskDataStore {
+final class RealmTaskDataStore {
     
     private let realm = try! Realm()
-    var objects: Results<Task> {
-        realm.objects(Task.self)
+    var objects: Results<RealmTask> {
+        realm.objects(RealmTask.self)
     }
     
-    func create(task: Task) {
+    func create(task: RealmTask) {
         try! realm.write {
             realm.add(task)
         }
     }
     
-    func read(index: Int) -> Task {
+    func read(index: Int) -> RealmTask {
         let task = objects[index]
         return task
     }
     
-    func update(task: Task, index: Int) {
+    func update(task: RealmTask, index: Int) {
         let object = objects[index]
         try! realm.write {
             object.title = task.title
