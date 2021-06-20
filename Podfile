@@ -8,5 +8,7 @@ target 'ToDoAppWithMVVMAndCA' do
   # Pods for ToDoAppWithMVVMAndCA
 
   pod 'RealmSwift'
+  pod 'RxSwift'
+  pod 'RxCocoa'
 
 end
