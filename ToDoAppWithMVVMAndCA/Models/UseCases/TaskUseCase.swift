@@ -16,15 +16,14 @@ final class TaskUseCase {
     }
     
     func add(text: String) {
-        let task = Task()
-        task.title = text
+        let task = Task(title: text, isChecked: false)
         repository.create(task: task)
     }
     
     func toggleCheck(at index: Int) {
-        let isChecked = repository.read(index: index).isChecked
         let title = repository.read(index: index).title
-        let task = Task(value: ["title": title, "isChecked": !isChecked])
+        let isChecked = !repository.read(index: index).isChecked
+        let task = Task(title: title, isChecked: isChecked)
         repository.update(task: task, index: index)
     }
     
@@ -34,7 +33,7 @@ final class TaskUseCase {
     
     func update(_ text: String, at index: Int) {
         let isChecked = repository.read(index: index).isChecked
-        let task = Task(value: ["title": text, "isChecked": isChecked])
+        let task = Task(title: text, isChecked: isChecked)
         repository.update(task: task, index: index)
     }
     
