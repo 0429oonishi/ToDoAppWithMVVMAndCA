@@ -21,6 +21,9 @@
 		ABEB847E267E2B2E0044414B /* AdditionalTask.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABEB847D267E2B2E0044414B /* AdditionalTask.storyboard */; };
 		ABEB8482267E2C5D0044414B /* EditTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEB8481267E2C5D0044414B /* EditTaskViewController.swift */; };
 		ABEB8484267E2C630044414B /* EditTask.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABEB8483267E2C630044414B /* EditTask.storyboard */; };
+		ABEB848C267E4E880044414B /* TaskDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEB848B267E4E880044414B /* TaskDataStore.swift */; };
+		ABEB848E267E4EC40044414B /* TaskUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEB848D267E4EC40044414B /* TaskUseCase.swift */; };
+		ABEB8490267E4ED40044414B /* TaskRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEB848F267E4ED40044414B /* TaskRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +44,9 @@
 		ABEB847D267E2B2E0044414B /* AdditionalTask.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AdditionalTask.storyboard; sourceTree = "<group>"; };
 		ABEB8481267E2C5D0044414B /* EditTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskViewController.swift; sourceTree = "<group>"; };
 		ABEB8483267E2C630044414B /* EditTask.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditTask.storyboard; sourceTree = "<group>"; };
+		ABEB848B267E4E880044414B /* TaskDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDataStore.swift; sourceTree = "<group>"; };
+		ABEB848D267E4EC40044414B /* TaskUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskUseCase.swift; sourceTree = "<group>"; };
+		ABEB848F267E4ED40044414B /* TaskRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRepository.swift; sourceTree = "<group>"; };
 		CA4F2AF0FD79D371A874DFCC /* Pods-ToDoAppWithMVVMAndCA.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToDoAppWithMVVMAndCA.release.xcconfig"; path = "Target Support Files/Pods-ToDoAppWithMVVMAndCA/Pods-ToDoAppWithMVVMAndCA.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -128,7 +134,10 @@
 		ABEB8473267E231E0044414B /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				ABEB8477267E29540044414B /* Task.swift */,
+				ABEB8488267E4E070044414B /* Entities */,
+				ABEB8487267E4DE00044414B /* DataStores */,
+				ABEB8485267E4DB60044414B /* Repositories */,
+				ABEB8486267E4DC40044414B /* UseCases */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -150,6 +159,38 @@
 				ABEB8483267E2C630044414B /* EditTask.storyboard */,
 			);
 			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		ABEB8485267E4DB60044414B /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				ABEB848F267E4ED40044414B /* TaskRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		ABEB8486267E4DC40044414B /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				ABEB848D267E4EC40044414B /* TaskUseCase.swift */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		ABEB8487267E4DE00044414B /* DataStores */ = {
+			isa = PBXGroup;
+			children = (
+				ABEB848B267E4E880044414B /* TaskDataStore.swift */,
+			);
+			path = DataStores;
+			sourceTree = "<group>";
+		};
+		ABEB8488267E4E070044414B /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				ABEB8477267E29540044414B /* Task.swift */,
+			);
+			path = Entities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -269,13 +310,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABEB848E267E4EC40044414B /* TaskUseCase.swift in Sources */,
 				ABEB846F267E230E0044414B /* TaskTableViewCell.swift in Sources */,
 				ABEB845E267E1F250044414B /* TaskViewController.swift in Sources */,
 				ABEB847A267E2B180044414B /* AdditionalTaskViewController.swift in Sources */,
+				ABEB8490267E4ED40044414B /* TaskRepository.swift in Sources */,
 				ABEB8478267E29540044414B /* Task.swift in Sources */,
 				ABEB845A267E1F250044414B /* AppDelegate.swift in Sources */,
 				ABEB845C267E1F250044414B /* SceneDelegate.swift in Sources */,
 				ABEB8482267E2C5D0044414B /* EditTaskViewController.swift in Sources */,
+				ABEB848C267E4E880044414B /* TaskDataStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
