@@ -10,7 +10,7 @@ import UIKit
 final class TaskViewController: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView!
-    private var taskUseCase = TaskUseCase(TaskRepositoryImpl())
+    private var taskUseCase = TaskUseCase(RealmTaskRepositoryImpl())
     
     override func viewDidLoad() {
         super.viewDidLoad()
