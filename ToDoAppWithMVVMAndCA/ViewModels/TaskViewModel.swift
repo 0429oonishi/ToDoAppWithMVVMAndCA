@@ -22,9 +22,9 @@ protocol TaskViewModelType {
     var outputs: TaskViewModelOutput { get }
 }
 
-final class TaskViewModel: TaskViewModelInput, TaskViewModelOutput { 
+final class TaskViewModel: TaskViewModelInput, TaskViewModelOutput {
     
-    private let taskUseCase = TaskUseCase(RealmTaskRepositoryImpl())
+    private let taskUseCase = TaskUseCase(TaskRepositoryImpl())
     
     private let goAdditionalTaskVCRelay = PublishRelay<Void>()
     func goAdditionalTaskVC(handler: () -> Void) {

@@ -10,6 +10,7 @@
 		2F989F3CB858442C06FF55E4 /* Pods_ToDoAppWithMVVMAndCA.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F19961942D2ED22396C6913 /* Pods_ToDoAppWithMVVMAndCA.framework */; };
 		ABB8EDD2267FB6C6004C1EAE /* RealmTaskRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB8EDD1267FB6C6004C1EAE /* RealmTaskRepository.swift */; };
 		ABB8EDD4267FBCF4004C1EAE /* TaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB8EDD3267FBCF4004C1EAE /* TaskViewModel.swift */; };
+		ABC51EED2680E4C000254ED1 /* TaskDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC51EEC2680E4C000254ED1 /* TaskDataStore.swift */; };
 		ABEB845A267E1F250044414B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEB8459267E1F250044414B /* AppDelegate.swift */; };
 		ABEB845C267E1F250044414B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEB845B267E1F250044414B /* SceneDelegate.swift */; };
 		ABEB845E267E1F250044414B /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEB845D267E1F250044414B /* TaskViewController.swift */; };
@@ -33,6 +34,7 @@
 		8F19961942D2ED22396C6913 /* Pods_ToDoAppWithMVVMAndCA.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ToDoAppWithMVVMAndCA.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABB8EDD1267FB6C6004C1EAE /* RealmTaskRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmTaskRepository.swift; sourceTree = "<group>"; };
 		ABB8EDD3267FBCF4004C1EAE /* TaskViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewModel.swift; sourceTree = "<group>"; };
+		ABC51EEC2680E4C000254ED1 /* TaskDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDataStore.swift; sourceTree = "<group>"; };
 		ABEB8456267E1F250044414B /* ToDoAppWithMVVMAndCA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoAppWithMVVMAndCA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABEB8459267E1F250044414B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ABEB845B267E1F250044414B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 		ABEB8487267E4DE00044414B /* DataStores */ = {
 			isa = PBXGroup;
 			children = (
+				ABC51EEC2680E4C000254ED1 /* TaskDataStore.swift */,
 				ABEB848B267E4E880044414B /* RealmTaskDataStore.swift */,
 			);
 			path = DataStores;
@@ -333,6 +336,7 @@
 				ABEB8490267E4ED40044414B /* TaskRepository.swift in Sources */,
 				ABEB8478267E29540044414B /* Task.swift in Sources */,
 				ABEB845A267E1F250044414B /* AppDelegate.swift in Sources */,
+				ABC51EED2680E4C000254ED1 /* TaskDataStore.swift in Sources */,
 				ABEB845C267E1F250044414B /* SceneDelegate.swift in Sources */,
 				ABEB8482267E2C5D0044414B /* EditTaskViewController.swift in Sources */,
 				ABEB848C267E4E880044414B /* RealmTaskDataStore.swift in Sources */,

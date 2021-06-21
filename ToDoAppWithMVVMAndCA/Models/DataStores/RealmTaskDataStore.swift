@@ -8,25 +8,30 @@
 import Foundation
 import RealmSwift
 
-final class RealmTaskDataStore {
+final class RealmTaskDataStore: TaskDataStoreProtocol {
     
     private let realm = try! Realm()
-    var objects: Results<RealmTask> {
+    private var objects: Results<RealmTask> {
         realm.objects(RealmTask.self)
     }
     
-    func create(task: RealmTask) {
+    func create(task: Task) {
+        let realmTask = RealmTask(task: task)
         try! realm.write {
-            realm.add(task)
+            realm.add(realmTask)
         }
     }
     
-    func read(index: Int) -> RealmTask {
-        let task = objects[index]
+    func read(index: Int) -> Task {
+        let task = Task(task: objects[index])
         return task
     }
     
-    func update(task: RealmTask, index: Int) {
+    func readAll() -> [Task] {
+        return objects.map { Task(task: $0) }
+    }
+    
+    func update(task: Task, index: Int) {
         let object = objects[index]
         try! realm.write {
             object.title = task.title
@@ -41,4 +46,34 @@ final class RealmTaskDataStore {
         }
     }
     
+    func deleteAll() {
+        for object in objects {
+            try! realm.write {
+                realm.delete(object)
+            }
+        }
+    }
+    
 }
+
+private extension RealmTask {
+    
+    convenience init(task: Task) {
+        self.init()
+        self.isChecked = task.isChecked
+        self.title = task.title
+    }
+    
+}
+
+private extension Task {
+    
+    init(task: RealmTask) {
+        self.isChecked = task.isChecked
+        self.title = task.title
+    }
+    
+}
+
+
+

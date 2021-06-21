@@ -6,3 +6,13 @@
 //
 
 import Foundation
+
+// 共通型
+protocol TaskDataStoreProtocol {
+    func create(task: Task)
+    func read(index: Int) -> Task
+    func readAll() -> [Task]
+    func update(task: Task, index: Int)
+    func delete(index: Int)
+    func deleteAll()
+}

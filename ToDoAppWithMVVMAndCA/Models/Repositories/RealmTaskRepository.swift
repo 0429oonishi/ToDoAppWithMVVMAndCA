@@ -7,29 +7,25 @@
 
 import Foundation
 
-// Realmに依存したRepositoryのImpl
-final class RealmTaskRepositoryImpl: TaskRepositoryProtocol {
+// 何にも依存しないTaskRepositoryImpl
+final class TaskRepositoryImpl: TaskRepositoryProtocol {
     
     private let dataStore = RealmTaskDataStore()
     
     func create(task: Task) {
-        let realmTask = RealmTask(task: task)
-        dataStore.create(task: realmTask)
+        dataStore.create(task: task)
     }
     
     func read(index: Int) -> Task {
-        let task = dataStore.read(index: index)
-        let realmTask = Task(task: task)
-        return realmTask
+        return dataStore.read(index: index)
     }
     
     func readAll() -> [Task] {
-        return dataStore.objects.map { Task(task: $0) }
+        return dataStore.readAll()
     }
     
     func update(task: Task, index: Int) {
-        let realmTask = RealmTask(task: task)
-        dataStore.update(task: realmTask, index: index)
+        dataStore.update(task: task, index: index)
     }
     
     func delete(index: Int) {
@@ -37,30 +33,7 @@ final class RealmTaskRepositoryImpl: TaskRepositoryProtocol {
     }
     
     func deleteAll() {
-        (0..<dataStore.objects.count).forEach { index in
-            dataStore.delete(index: index)
-        }
+        dataStore.deleteAll()
     }
     
 }
-
-private extension RealmTask {
-    
-    convenience init(task: Task) {
-        self.init()
-        self.isChecked = task.isChecked
-        self.title = task.title
-    }
-    
-}
-
-private extension Task {
-    
-    init(task: RealmTask) {
-        self.isChecked = task.isChecked
-        self.title = task.title
-    }
-    
-}
-
-
