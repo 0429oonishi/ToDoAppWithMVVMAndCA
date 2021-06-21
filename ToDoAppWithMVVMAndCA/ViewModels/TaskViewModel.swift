@@ -10,11 +10,11 @@ import RxSwift
 import RxCocoa
 
 protocol TaskViewModelInput {
-    func addTaskButtonDidTapped(handler: () -> Void)
+    func checkButtonDidTapped(index: Int, handler: () -> Void)
 }
 
 protocol TaskViewModelOutput: AnyObject {
-    
+    func goAdditionalTaskVC(handler: () -> Void)
 }
 
 protocol TaskViewModelType {
@@ -22,13 +22,38 @@ protocol TaskViewModelType {
     var outputs: TaskViewModelOutput { get }
 }
 
-final class TaskViewModel: TaskViewModelInput, TaskViewModelOutput {
+final class TaskViewModel: TaskViewModelInput, TaskViewModelOutput { 
     
     private let taskUseCase = TaskUseCase(RealmTaskRepositoryImpl())
     
-    private let addTaskButtonRelay = PublishRelay<Void>()
-    func addTaskButtonDidTapped(handler: () -> Void) {
-        addTaskButtonRelay.accept(handler())
+    private let goAdditionalTaskVCRelay = PublishRelay<Void>()
+    func goAdditionalTaskVC(handler: () -> Void) {
+        goAdditionalTaskVCRelay.accept(handler())
+    }
+    
+    func checkButtonDidTapped(index: Int, handler: () -> Void) {
+        taskUseCase.toggleCheck(at: index)
+        handler()
+    }
+    
+    var taskCount: Int {
+        return taskUseCase.count()
+    }
+    
+    func task(at index: Int) -> Task {
+        return taskUseCase.read(at: index)
+    }
+    
+    func update(_ text: String, at index: Int) {
+        taskUseCase.update(text, at: index)
+    }
+    
+    func delete(at index: Int) {
+        taskUseCase.delete(at: index)
+    }
+    
+    func add(text: String) {
+        taskUseCase.add(text: text)
     }
     
 }

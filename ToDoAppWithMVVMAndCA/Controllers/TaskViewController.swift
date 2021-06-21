@@ -14,9 +14,6 @@ final class TaskViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var addTaskButton: UIBarButtonItem!
     
-    // MARK: - ToDo 引き離す
-    private var taskUseCase = TaskUseCase(RealmTaskRepositoryImpl())
-    
     private let taskViewModel = TaskViewModel()
     private let disposeBag = DisposeBag()
     
@@ -29,19 +26,15 @@ final class TaskViewController: UIViewController {
     }
     
     private func setupBindings() {
-        // Input
         addTaskButton.rx.tap
             .subscribe(onNext: { [weak self] in
-                self?.taskViewModel.inputs.addTaskButtonDidTapped() {
+                self?.taskViewModel.outputs.goAdditionalTaskVC() {
                     let additionalTaskVC = AdditionalTaskViewController.instantiate()
                     additionalTaskVC.delegate = self
                     self?.navigationController?.pushViewController(additionalTaskVC, animated: true)
                 }
             })
             .disposed(by: disposeBag)
-        
-        // Output
-        
         
     }
     
@@ -60,16 +53,16 @@ extension TaskViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let editTaskVC = EditTaskViewController.instantiate(
-            text: taskUseCase.read(at: indexPath.row).title
+            text: taskViewModel.task(at: indexPath.row).title
         )
         editTaskVC.editEvent = { [weak self] text in
-            self?.taskUseCase.update(text, at: indexPath.row)
+            self?.taskViewModel.update(text, at: indexPath.row)
             DispatchQueue.main.async {
                 self?.tableView.reloadRows(at: [indexPath], with: .automatic)
             }
         }
         editTaskVC.deleteEvent = { [weak self] in
-            self?.taskUseCase.delete(at: indexPath.row)
+            self?.taskViewModel.delete(at: indexPath.row)
             DispatchQueue.main.async {
                 self?.tableView.reloadData()
             }
@@ -86,7 +79,7 @@ extension TaskViewController: UITableViewDelegate {
 extension TaskViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return taskUseCase.count()
+        return taskViewModel.taskCount
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -94,11 +87,12 @@ extension TaskViewController: UITableViewDataSource {
             withIdentifier: TaskTableViewCell.identifier,
             for: indexPath
         ) as! TaskTableViewCell
-        let task = taskUseCase.read(at: indexPath.row)
+        let task = taskViewModel.task(at: indexPath.row)
         cell.configure(task: task) { [weak self] in
-            self?.taskUseCase.toggleCheck(at: indexPath.row)
-            DispatchQueue.main.async {
-                self?.tableView.reloadRows(at: [indexPath], with: .automatic)
+            self?.taskViewModel.inputs.checkButtonDidTapped(index: indexPath.row) {
+                DispatchQueue.main.async {
+                    self?.tableView.reloadRows(at: [indexPath], with: .automatic)
+                }
             }
         }
         return cell
@@ -109,7 +103,7 @@ extension TaskViewController: UITableViewDataSource {
 extension TaskViewController: AdditionalTaskViewControllerDelegate {
     
     func addButtonDidTapped(text: String) {
-        taskUseCase.add(text: text)
+        taskViewModel.add(text: text)
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
